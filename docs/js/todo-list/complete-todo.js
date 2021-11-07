@@ -24,8 +24,10 @@ const changeStatusAll = (check) => {
     todoListArrNew = ( check ) ? todoListArr.map( ( {id, title} ) => ( {id, title, estatus:'terminado'} ) )
                                : todoListArr.map( ( {id, title} ) => ( {id, title, estatus:'pendiente'} ) );
     
-    ls.setItem("todoList", JSON.stringify(todoListArrNew))
-    getTodos(); 
+    if( todoListArrNew.length > 0 ){
+        ls.setItem("todoList", JSON.stringify(todoListArrNew))
+        getTodos(); 
+    }
 }
 
 export default function completeTodo(checkComplete, todoListContainer, checkCompleteAll){
